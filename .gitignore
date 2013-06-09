@@ -1,0 +1,6 @@
+*.pyc
+*.komodoproject
+bin
+include
+lib
+local
