@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Songlister</title>
+        <meta name="description" content="Share your sets">
+        <meta name="viewport" content="width=device-width">
+        <link href="http://fonts.googleapis.com/css?family=Delius" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="/app/static/css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+        <link rel="stylesheet" href="/app/static/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="/app/static/css/main.css">
+
+        <script src="/app/static/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+                <style type="text/css">
+            #songlist li {
+                font-family: 'Delius', Arial, sans-serif;
+                font-weight: 400;
+                list-style: none;
+            }
+            #songlist ul li {
+                font-size: 14px;
+            }
+            #songlist ul li ul li {
+                font-size: 18px;
+            }
+            #songlist-header {
+                height: 43px;
+                background: url("http://www.matt-byrne.net/songlister_images/nb_header.png") repeat-x;
+            }
+            #songlist {
+                background: url("http://www.matt-byrne.net/songlister_images/nb_body.png");
+                background-repeat: repeat;
+                clear: both;
+            }          
+        </style>
+    </head>
+    <body>
+
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#">Songlister</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="songlist" style="width: 700px;">
+                <div id="songlist-header"></div>
+                <div style="float: right;">
+                    <fieldset>
+                        <p>Sort by</p>
+                        <select id="songlist-filter">
+                            <option value="entry-date">Entry Date</option>
+                            <option value="artist">Artist</option>
+                            <option value="title">Title</option>
+                            <option value="key">Key</option>
+                            <option value="tempo">Tempo</option>
+                            <option value="style">Style</option>
+                            <option value="energy">Energy</option>
+                        </select>
+                    </fieldset>
+                </div>
+                <div class="ui-widget">
+                        <input id="input-songs" placeholder="search songs"/>
+                </div>
+                <ul>
+                    <li>- June 7-9
+                        <ul>
+                        
+                            <li>Bob Dylan - Like a Rolling Stone
+                                <a href="http://www.songsterr.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/songsterr.png">
+                                </a>
+                                <a href="http://www.rdio.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/rdio.png">
+                                </a>
+                            </li>
+                        
+                            <li>The Cure - Just Like Heaven
+                                <a href="http://www.songsterr.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/songsterr.png">
+                                </a>
+                                <a href="http://www.rdio.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/rdio.png">
+                                </a>
+                            </li>
+                        
+                            <li>Green Day - American Idiot
+                                <a href="http://www.songsterr.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/songsterr.png">
+                                </a>
+                                <a href="http://www.rdio.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/rdio.png">
+                                </a>
+                            </li>
+                        
+                            <li>Pearl Jam - Last Kiss
+                                <a href="http://www.songsterr.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/songsterr.png">
+                                </a>
+                                <a href="http://www.rdio.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/rdio.png">
+                                </a>
+                            </li>
+                        
+                            <li>Iration - Dream
+                                <a href="http://www.songsterr.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/songsterr.png">
+                                </a>
+                                <a href="http://www.rdio.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/rdio.png">
+                                </a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+        </div> <!-- /container -->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+        <script>window.jQuery || document.write('<script src="/app/static/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        
+	<script>
+	$(function() {
+                var all_songs = [
+                    
+                        "Green Day - Good Riddance",
+                    
+                        "Bob Dylan - Like a Rolling Stone",
+                    
+                        "The Cure - Just Like Heaven",
+                    
+                        "Green Day - American Idiot",
+                    
+                        "Justin Timberlake - Mirrors",
+                    
+                        "Selena Gomez - Come and Get It",
+                    
+                        "Imagine Dragons  - Radioactive",
+                    
+                        "Bruno Mars - When I Was Your Man",
+                    
+                        "Pearl Jam - Last Kiss",
+                    
+                        "Iration - Dream",
+                    
+                ];
+		$( "#input-songs" ).autocomplete({
+			source: all_songs
+		});
+	});
+	</script>
+
+        <script src="/app/static/js/main.js"></script>
+    </body>
+</html>
