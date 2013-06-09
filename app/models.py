@@ -1,3 +1,4 @@
+import os
 import uuid
 from datetime import datetime
 from app import db
@@ -5,7 +6,7 @@ from pyechonest import config
 from pyechonest import artist as en_artist
 from pyechonest import song as en_song
 
-config.ECHO_NEST_API_KEY = ""
+config.ECHO_NEST_API_KEY = os.getenv("ECHO_NEST_API_KEY")
 
 groups_songs = db.Table(
     "groups_songs",
@@ -149,7 +150,7 @@ class Song(db.Model):
         self.genre = genre
 
     def __str__(self):
-        return "<Song %s>" % (self.name)
+        return "<Song %s - %s>" % (self.artist.name, self.name)
 
 
 class Venue(db.Model):

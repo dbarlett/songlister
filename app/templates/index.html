@@ -67,25 +67,39 @@
         </div>
 
         <div class="container">
-            <div id="songlist">
+            <div id="songlist" style="width: 700px;">
                 <div id="songlist-header"></div>
+                <div style="float: right;">
+                    <fieldset>
+                        <p>Sort by</p>
+                        <select id="songlist-filter">
+                            <option value="entry-date">Entry Date</option>
+                            <option value="artist">Artist</option>
+                            <option value="title">Title</option>
+                            <option value="key">Key</option>
+                            <option value="tempo">Tempo</option>
+                            <option value="style">Style</option>
+                            <option value="energy">Energy</option>
+                        </select>
+                    </fieldset>
+                </div>
                 <div class="ui-widget">
-                        <input id="input-songs" placeholder="song" width="80"/>
+                        <input id="input-songs" placeholder="search songs"/>
                 </div>
                 <ul>
                     <li>- June 7-9
                         <ul>
-                            <li>Just Like Heaven - The Cure <a href="http://rdio.com"><img src="http://lorempixel.com/20/20/"></a> <a href="http://songsterr.com"><img src="http://lorempixel.com/20/20/"></a></li>
-                            <li>Good Riddance - Green Day  <a href="http://rdio.com"><img src="http://lorempixel.com/20/20/"></a> <a href="http://songsterr.com"><img src="http://lorempixel.com/20/20/"></a></li>
+                        {% for song in user_songs %}
+                            <li>{{song.artist.name}} - {{song.name}}
+                                <a href="http://www.songsterr.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/songsterr.png">
+                                </a>
+                                <a href="http://www.rdio.com">
+                                    <img src="http://www.matt-byrne.net/songlister_images/rdio.png">
+                                </a>
+                            </li>
+                        {% endfor %}
                         </ul>
-                    </li>
-                    <li>- June 3-7
-                        <ul>
-                            <li>Just Like Heaven - The Cure <a href="http://rdio.com"><img src="http://lorempixel.com/20/20/"></a> <a href="http://songsterr.com"><img src="http://lorempixel.com/20/20/"></a></li>
-                            <li>Good Riddance - Green Day <a href="http://songsterr.com"><img src="http://lorempixel.com/20/20/"></a></li>
-                        </ul>
-                    </li>
-                    <li>+ June 2
                     </li>
                 </ul>
             </div>
@@ -101,12 +115,13 @@
         
 	<script>
 	$(function() {
-		var availableTags = [
-                    "Good Riddance - Green Day",
-                    "Just Like Heaven - The Cure",
-		];
+                var all_songs = [
+                    {% for song in all_songs %}
+                        "{{song.artist.name}} - {{song.name}}",
+                    {% endfor %}
+                ];
 		$( "#input-songs" ).autocomplete({
-			source: availableTags
+			source: all_songs
 		});
 	});
 	</script>
